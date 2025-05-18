@@ -28,13 +28,13 @@ Enter the URL:
    ```
    https://github.com/JJefro/BudgetFeature.git
    ```
-Select version `1.0.2` or higher
+Select version `1.0.3` or higher
 
 ### Add the package to your local package
 In your `Package.swift`:
 ```swift
 dependencies: [
-    .package(url: "https://github.com/JJefro/BudgetFeature.git", from: "1.0.2")
+    .package(url: "https://github.com/JJefro/BudgetFeature.git", from: "1.0.3")
 ]
 ```
 And in your target:
