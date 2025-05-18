@@ -15,7 +15,9 @@ struct CategoryDetailsInteractorMock: CategoryDetailsInteractorProtocol {
         self.error = error
     }
 
-    func fetchCategoryDetailsEntity(for type: CategoryType) async throws -> CategoryDetailsEntity {
+    func fetchCategoryDetailsEntity(for type: CategoryType) async throws
+        -> CategoryDetailsEntity
+    {
         if let error = error {
             throw error
         }

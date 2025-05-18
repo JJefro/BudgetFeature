@@ -35,7 +35,7 @@ final class BudgetPresenter: ObservableObject {
             let entity = try await interactor.fetchBudgetOverviewEntity()
             uiModel.state = .content(entity)
         } catch {
-            uiModel.state = .error(error)
+            uiModel.state = .error(description: error.localizedDescription)
         }
     }
 }

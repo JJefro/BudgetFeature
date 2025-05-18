@@ -5,8 +5,8 @@
 //  Created by j.jefrosinins on 18/05/2025.
 //
 
-import SwiftUI
 import Charts
+import SwiftUI
 
 struct CategoryDetailsView: View {
     private var categoryType: CategoryType
@@ -31,31 +31,39 @@ struct CategoryDetailsView: View {
         switch presenter.uiModel.state {
         case .loading:
             ProgressView()
-        case let .error(error):
-            Text(error.localizedDescription)
+        case let .error(description):
+            Text(description)
         case let .content(entity):
             ScrollView {
                 VStack(spacing: 20) {
                     Text(entity.subtitle)
                         .font(.headline.bold())
-                    PieChartView(title: entity.title,
-                                 amountSpent: entity.amountSpent,
-                                 budget: entity.budget)
+                    PieChartView(
+                        title: entity.title,
+                        amountSpent: entity.amountSpent,
+                        budget: entity.budget
+                    )
                     .id("PieChart")
                     .frame(maxHeight: 300)
                 }
                 .padding()
                 LazyVStack(alignment: .center, pinnedViews: [.sectionHeaders]) {
-                    Section(header:
-                                ZStack {
-                        Color(UIColor.systemBackground)
-                        Text("Transactions")
-                            .font(.headline)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .background(Color(UIColor.systemBackground))
-                            .padding()
-                    }) {
-                        ForEach(entity.transactions.indices, id: \.self) { index in
+                    Section(
+                        header:
+                            ZStack {
+                                Color(UIColor.systemBackground)
+                                Text("Transactions")
+                                    .font(.headline)
+                                    .frame(
+                                        maxWidth: .infinity,
+                                        alignment: .leading
+                                    )
+                                    .background(Color(UIColor.systemBackground))
+                                    .padding()
+                            }
+                    ) {
+                        ForEach(entity.transactions.indices, id: \.self) {
+                            index in
                             buildTransactionItem(entity.transactions[index])
                         }
                     }
@@ -65,7 +73,8 @@ struct CategoryDetailsView: View {
     }
 
     @ViewBuilder
-    private func buildTransactionItem(_ entity: TransactionsEntity) -> some View {
+    private func buildTransactionItem(_ entity: TransactionsEntity) -> some View
+    {
         HStack {
             VStack(alignment: .leading) {
                 Text(entity.title)

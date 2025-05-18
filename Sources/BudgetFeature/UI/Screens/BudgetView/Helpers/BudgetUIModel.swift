@@ -10,8 +10,8 @@ struct BudgetUIModel {
     var navigationTitle: String = "Budget Overview"
 }
 
-enum BudgetViewState {
+enum BudgetViewState: Equatable {
     case content(BudgetOverviewEntity)
     case loading
-    case error(Error)
+    case error(description: String)
 }

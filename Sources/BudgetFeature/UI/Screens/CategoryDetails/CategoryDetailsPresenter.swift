@@ -35,7 +35,7 @@ final class CategoryDetailsPresenter: ObservableObject {
             let entity = try await interactor.fetchCategoryDetailsEntity(for: type)
             uiModel.state = .content(entity)
         } catch {
-            uiModel.state = .error(error)
+            uiModel.state = .error(desctiption: error.localizedDescription)
         }
     }
 }

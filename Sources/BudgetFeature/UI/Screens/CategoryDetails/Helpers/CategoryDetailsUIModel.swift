@@ -9,8 +9,8 @@ struct CategoryDetailsUIModel {
     var state: CategoryDetailsState
 }
 
-enum CategoryDetailsState {
+enum CategoryDetailsState: Equatable {
     case loading
     case content(CategoryDetailsEntity)
-    case error(Error)
+    case error(desctiption: String)
 }

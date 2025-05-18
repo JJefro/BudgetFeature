@@ -22,6 +22,9 @@ public struct BudgetView: View {
                     presenter.stopLoading()
                 }
                 .navigationTitle(presenter.uiModel.navigationTitle)
+                .navigationDestination(for: CategoryType.self) { type in
+                    CategoryDetailsView(categoryType: type)
+                }
         }
     }
 
@@ -30,8 +33,8 @@ public struct BudgetView: View {
         switch presenter.uiModel.state {
         case .loading:
             ProgressView()
-        case let .error(error):
-            Text(error.localizedDescription)
+        case let .error(description):
+            Text(description)
         case let .content(entity):
             buildContentView(entity)
         }
@@ -40,19 +43,21 @@ public struct BudgetView: View {
     @ViewBuilder
     private func buildContentView(_ entity: BudgetOverviewEntity) -> some View {
         List {
-            Section(header: Text(entity.title)
-                .textCase(nil)
-                .font(.headline)
-                .frame(maxWidth: .infinity, alignment: .center)
-                .multilineTextAlignment(.center)
-                .fontWeight(.bold)) {
-                    ForEach(entity.categories.indices, id: \.self) { index in
-                        let categoryEntity = entity.categories[index]
-                        NavigationLink(destination: CategoryDetailsView(categoryType: categoryEntity.type)) {
-                            buildCategoryItemView(categoryEntity)
-                        }
+            Section(
+                header: Text(entity.title)
+                    .textCase(nil)
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .multilineTextAlignment(.center)
+                    .fontWeight(.bold)
+            ) {
+                ForEach(entity.categories.indices, id: \.self) { index in
+                    let category = entity.categories[index]
+                    NavigationLink(value: category.type) {
+                        buildCategoryItemView(category)
                     }
                 }
+            }
         }
     }
 

@@ -1,4 +1,5 @@
 import Testing
+
 @testable import BudgetFeature
 
 @Suite("Unit tests for BudgetPresenter business logic")
@@ -8,11 +9,10 @@ struct BudgetPresenterTests {
         let interactorMock = BudgetInteractorMock(entityMock: .mock)
         let presenter = await BudgetPresenter(interactor: interactorMock)
 
-        if case .loading = await presenter.uiModel.state {
-            #expect(true)
-        } else {
-            Issue.record("Expected initial .loading state before fetching data")
-        }
+        try await #require(
+            presenter.uiModel.state == .loading,
+            "Expected initial .loading state before fetching data"
+        )
 
         await presenter.fetchData()
 
@@ -25,20 +25,23 @@ struct BudgetPresenterTests {
 
     @Test("Should handle error and update state to .error")
     func fetchData_failure() async throws {
-        let interactorMock = BudgetInteractorMock(entityMock: .mock,
-                                                  error: TestError.fetchFailed)
+        let interactorMock = BudgetInteractorMock(
+            entityMock: .mock,
+            error: TestError.fetchFailed
+        )
         let presenter = await BudgetPresenter(interactor: interactorMock)
-        
-        if case .loading = await presenter.uiModel.state {
-            #expect(true)
-        } else {
-            Issue.record("Expected initial .loading state before fetching data")
-        }
+
+        try await #require(
+            presenter.uiModel.state == .loading,
+            "Expected initial .loading state before fetching data"
+        )
 
         await presenter.fetchData()
 
-        if case let .error(error) = await presenter.uiModel.state {
-            #expect(error.localizedDescription == TestError.fetchFailed.localizedDescription)
+        if case let .error(description) = await presenter.uiModel.state {
+            #expect(
+                description == TestError.fetchFailed.localizedDescription
+            )
         } else {
             Issue.record("Expected .error state after failed fetch")
         }

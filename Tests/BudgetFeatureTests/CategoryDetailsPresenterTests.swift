@@ -6,6 +6,7 @@
 //
 
 import Testing
+
 @testable import BudgetFeature
 
 @Suite("Unit tests for CategoryDetailsPresenter business logic")
@@ -13,13 +14,14 @@ struct CategoryDetailsPresenterTests {
     @Test("Should load data and update state to .content")
     func fetchData_success() async throws {
         let interactorMock = CategoryDetailsInteractorMock(entityMock: .mock)
-        let presenter = await CategoryDetailsPresenter(interactor: interactorMock)
+        let presenter = await CategoryDetailsPresenter(
+            interactor: interactorMock
+        )
 
-        if case .loading = await presenter.uiModel.state {
-            #expect(true)
-        } else {
-            Issue.record("Expected initial .loading state before fetching data")
-        }
+        try await #require(
+            presenter.uiModel.state == .loading,
+            "Expected initial .loading state before fetching data"
+        )
 
         await presenter.fetchData(for: CategoryType(rawValue: "food"))
 
@@ -32,19 +34,26 @@ struct CategoryDetailsPresenterTests {
 
     @Test("Should handle error and update state to .error")
     func fetchData_failure() async throws {
-        let interactorMock = CategoryDetailsInteractorMock(entityMock: .mock, error: TestError.fetchFailed)
-        let presenter = await CategoryDetailsPresenter(interactor: interactorMock)
+        let interactorMock = CategoryDetailsInteractorMock(
+            entityMock: .mock,
+            error: TestError.fetchFailed
+        )
+        let presenter = await CategoryDetailsPresenter(
+            interactor: interactorMock
+        )
 
-        if case .loading = await presenter.uiModel.state {
-            #expect(true)
-        } else {
-            Issue.record("Expected initial .loading state before fetching data")
-        }
+        try await #require(
+            presenter.uiModel.state == .loading,
+            "Expected initial .loading state before fetching data"
+        )
 
         await presenter.fetchData(for: CategoryType(rawValue: "food"))
 
-        if case let .error(error) = await presenter.uiModel.state {
-            #expect(error.localizedDescription == TestError.fetchFailed.localizedDescription)
+        if case let .error(description) = await presenter.uiModel.state {
+            #expect(
+                description
+                    == TestError.fetchFailed.localizedDescription
+            )
         } else {
             Issue.record("Expected .error state after failed fetch")
         }

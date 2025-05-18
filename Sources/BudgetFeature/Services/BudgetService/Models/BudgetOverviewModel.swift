@@ -5,6 +5,8 @@
 //  Created by j.jefrosinins on 17/05/2025.
 //
 
+import Foundation
+
 struct BudgetOverviewModel: Codable {
     var totalBudget: Double
     var totalAmountSpent: Double

@@ -19,7 +19,7 @@ final class BudgetInteractor: BudgetInteractorProtocol, @unchecked Sendable {
     }
 
     nonisolated func fetchBudgetOverviewEntity() async throws -> BudgetOverviewEntity {
-        try await Task.detached(priority: .userInitiated) {
+        try await Task.detached(priority: .background) {
             try await self.budgetService.perform(request: BudgetOverviewRequest())
         }.value
     }
