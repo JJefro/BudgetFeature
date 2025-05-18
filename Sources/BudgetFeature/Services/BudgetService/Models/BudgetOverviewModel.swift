@@ -30,7 +30,7 @@ struct CategoryModel: Codable {
     }
 }
 
-struct CategoryType: RawRepresentable, Codable, Equatable {
+struct CategoryType: RawRepresentable, Codable, Equatable, Hashable {
     var rawValue: String
 }
 

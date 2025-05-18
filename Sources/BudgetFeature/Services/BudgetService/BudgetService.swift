@@ -12,7 +12,6 @@ protocol BudgetServiceProtocol {
 }
 
 final class BudgetService: BudgetServiceProtocol {
-
     func perform<Request: RequestProtocol>(request: Request) async throws -> Request.Entity {
         /// Since we don't have a real API to get the data, this simulates a network request by loading a local JSON file
         try await Task.sleep(for: .seconds(1))

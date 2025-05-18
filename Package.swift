@@ -17,8 +17,9 @@ let package = Package(
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "BudgetFeature",
+            path: "Sources/BudgetFeature",
             resources: [
-                .process("SupportingFiles/Resources")
+                .process("SupportingFiles/Resources/Mocks")
             ]),
         .testTarget(
             name: "BudgetFeatureTests",

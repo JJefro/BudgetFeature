@@ -1,48 +1,109 @@
 {
-  "category": "Food",
-  "currency": "EUR",
-  "amount_spent": 400,
-  "budget": 550,
-  "transactions": [
-    {
-      "title": "Grocery Store",
-      "amount": 30,
-      "date": "2025-05-14T00:00:00Z"
-    },
-    {
-      "title": "Bakery",
-      "amount": 20,
-      "date": "2025-05-12T00:00:00Z"
-    },
-    {
-      "title": "Restaurant",
-      "amount": 50,
-      "date": "2025-05-10T00:00:00Z"
-    },
-    {
-      "title": "Supermarket",
-      "amount": 100,
-      "date": "2025-05-05T00:00:00Z"
-    },
-    {
-      "title": "Grocery Store",
-      "amount": 30,
-      "date": "2025-05-14T00:00:00Z"
-    },
-    {
-      "title": "Bakery",
-      "amount": 20,
-      "date": "2025-05-12T00:00:00Z"
-    },
-    {
-      "title": "Restaurant",
-      "amount": 50,
-      "date": "2025-05-10T00:00:00Z"
-    },
-    {
-      "title": "Supermarket",
-      "amount": 100,
-      "date": "2025-05-05T00:00:00Z"
-    }
-  ]
+    "category": "Food",
+    "currency": "EUR",
+    "amount_spent": 420,
+    "budget": 800,
+    "transactions": [
+        {
+            "title": "Grocery Store",
+            "amount": 25,
+            "date": "2025-05-01T00:00:00Z"
+        },
+        {
+            "title": "Bakery",
+            "amount": 20,
+            "date": "2025-05-02T00:00:00Z"
+        },
+        {
+            "title": "Restaurant",
+            "amount": 45,
+            "date": "2025-05-03T00:00:00Z"
+
+        },
+        {
+            "title": "Supermarket",
+            "amount": 30,
+            "date": "2025-05-04T00:00:00Z"
+        },
+        {
+            "title": "Cafe",
+            "amount": 15,
+            "date": "2025-05-05T00:00:00Z"
+        },
+        {
+            "title": "Snack Bar",
+            "amount": 10,
+            "date": "2025-05-06T00:00:00Z"
+        },
+        {
+            "title": "Deli",
+            "amount": 22,
+            "date": "2025-05-07T00:00:00Z"
+        },
+        {
+            "title": "Pizza Place",
+            "amount": 40,
+            "date": "2025-05-08T00:00:00Z"
+        },
+        {
+            "title": "Sushi",
+            "amount": 35,
+            "date": "2025-05-09T00:00:00Z"
+        },
+        {
+            "title": "Taco Stand",
+            "amount": 18,
+            "date": "2025-05-10T00:00:00Z"
+        },
+        {
+            "title": "Market",
+            "amount": 23,
+            "date": "2025-05-11T00:00:00Z"
+        },
+        {
+            "title": "Coffee Shop",
+            "amount": 11,
+            "date": "2025-05-12T00:00:00Z"
+        },
+        {
+            "title": "Meal Prep",
+            "amount": 30,
+            "date": "2025-05-13T00:00:00Z"
+        },
+        {
+            "title": "Food Truck",
+            "amount": 25,
+            "date": "2025-05-14T00:00:00Z"
+        },
+        {
+            "title": "Donut Shop",
+            "amount": 12,
+            "date": "2025-05-15T00:00:00Z"
+        },
+        {
+            "title": "Pantry Restock",
+            "amount": 19,
+            "date": "2025-05-16T00:00:00Z"
+        },
+        {
+            "title": "Hot Meals",
+            "amount": 27,
+            "date": "2025-05-17T00:00:00Z"
+        },
+        {
+            "title": "Grocery Express",
+            "amount": 20,
+            "date": "2025-05-18T00:00:00Z"
+        },
+        {
+            "title": "Lunch Delivery",
+            "amount": 30,
+            "date": "2025-05-19T00:00:00Z"
+        },
+        {
+            "title": "Quick Bites",
+            "amount": 12,
+            "date": "2025-05-20T00:00:00Z"
+        }
+    ]
 }

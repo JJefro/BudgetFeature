@@ -8,17 +8,18 @@
 import SwiftUI
 
 public struct BudgetView: View {
-    @ObservedObject var presenter: BudgetPresenter
+    @StateObject var presenter = BudgetPresenter()
 
-    public init() {
-        self.presenter = BudgetPresenter()
-    }
+    public init() {}
 
     public var body: some View {
         NavigationStack {
             buildBodyContent()
-                .task {
-                    await presenter.fetchData()
+                .onAppear {
+                    presenter.startLoading()
+                }
+                .onDisappear {
+                    presenter.stopLoading()
                 }
                 .navigationTitle(presenter.uiModel.navigationTitle)
         }
@@ -45,9 +46,10 @@ public struct BudgetView: View {
                 .frame(maxWidth: .infinity, alignment: .center)
                 .multilineTextAlignment(.center)
                 .fontWeight(.bold)) {
-                    ForEach(entity.categories) { category in
-                        NavigationLink(destination: CategoryDetailsView(categoryType: category.type)) {
-                            buildCategoryItemView(category)
+                    ForEach(entity.categories.indices, id: \.self) { index in
+                        let categoryEntity = entity.categories[index]
+                        NavigationLink(destination: CategoryDetailsView(categoryType: categoryEntity.type)) {
+                            buildCategoryItemView(categoryEntity)
                         }
                     }
                 }

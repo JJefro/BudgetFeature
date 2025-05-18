@@ -19,6 +19,8 @@ final class CategoryDetailsInteractor: CategoryDetailsInteractorProtocol, @unche
     }
 
     func fetchCategoryDetailsEntity(for type: CategoryType) async throws -> CategoryDetailsEntity {
-        try await budgetService.perform(request: CategoryDetailsRequest(type: type))
+        try await Task.detached(priority: .background) {
+            try await self.budgetService.perform(request: CategoryDetailsRequest(type: type))
+        }.value
     }
 }

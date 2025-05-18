@@ -10,18 +10,19 @@ import Charts
 
 struct CategoryDetailsView: View {
     private var categoryType: CategoryType
-    @ObservedObject var presenter: CategoryDetailsPresenter
+    @StateObject var presenter = CategoryDetailsPresenter()
 
-    init(categoryType: CategoryType,
-         presenter: CategoryDetailsPresenter = CategoryDetailsPresenter()) {
+    init(categoryType: CategoryType) {
         self.categoryType = categoryType
-        self.presenter = presenter
     }
 
     var body: some View {
         buildBodyContent()
-            .task {
-                await presenter.fetchData(for: categoryType)
+            .onAppear {
+                presenter.startLoading(for: categoryType)
+            }
+            .onDisappear {
+                presenter.stopLoading()
             }
     }
 
@@ -34,17 +35,17 @@ struct CategoryDetailsView: View {
             Text(error.localizedDescription)
         case let .content(entity):
             ScrollView {
+                VStack(spacing: 20) {
+                    Text(entity.subtitle)
+                        .font(.headline.bold())
+                    PieChartView(title: entity.title,
+                                 amountSpent: entity.amountSpent,
+                                 budget: entity.budget)
+                    .id("PieChart")
+                    .frame(maxHeight: 300)
+                }
+                .padding()
                 LazyVStack(alignment: .center, pinnedViews: [.sectionHeaders]) {
-                    VStack(spacing: 20) {
-                        Text(entity.subtitle)
-                            .font(.headline.bold())
-                        PieChartView(title: entity.title,
-                                     amountSpent: entity.amountSpent,
-                                     budget: entity.budget)
-                        .id("PieChart")
-                        .frame(maxHeight: 300)
-                    }
-                    .padding()
                     Section(header:
                                 ZStack {
                         Color(UIColor.systemBackground)
@@ -54,8 +55,8 @@ struct CategoryDetailsView: View {
                             .background(Color(UIColor.systemBackground))
                             .padding()
                     }) {
-                        ForEach(entity.transactions) { transaction in
-                            buildTransactionItem(transaction)
+                        ForEach(entity.transactions.indices, id: \.self) { index in
+                            buildTransactionItem(entity.transactions[index])
                         }
                     }
                 }

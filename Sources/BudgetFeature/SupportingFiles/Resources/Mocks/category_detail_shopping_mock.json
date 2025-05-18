@@ -1,18 +1,18 @@
 {
-  "category": "Shopping",
-  "currency": "EUR",
-  "amount_spent": 150,
-  "budget": 250,
-  "transactions": [
-    {
-      "title": "Clothing Store",
-      "amount": 70,
-      "date": "2025-05-11T00:00:00Z"
-    },
-    {
-      "title": "Online Purchase",
-      "amount": 80,
-      "date": "2025-05-09T00:00:00Z"
-    }
-  ]
+    "category": "Shopping",
+    "currency": "EUR",
+    "amount_spent": 150,
+    "budget": 250,
+    "transactions": [
+        {
+            "title": "Clothing Store",
+            "amount": 70,
+            "date": "2025-05-11T00:00:00Z"
+        },
+        {
+            "title": "Online Purchase",
+            "amount": 80,
+            "date": "2025-05-09T00:00:00Z"
+        }
+    ]
 }
