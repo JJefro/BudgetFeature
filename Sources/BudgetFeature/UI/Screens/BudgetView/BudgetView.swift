@@ -10,8 +10,8 @@ import SwiftUI
 public struct BudgetView: View {
     @ObservedObject var presenter: BudgetPresenter
 
-    init(presenter: BudgetPresenter = BudgetPresenter()) {
-        self.presenter = presenter
+    public init() {
+        self.presenter = BudgetPresenter()
     }
 
     public var body: some View {

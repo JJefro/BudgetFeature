@@ -8,7 +8,7 @@
 import SwiftUI
 import Charts
 
-public struct CategoryDetailsView: View {
+struct CategoryDetailsView: View {
     private var categoryType: CategoryType
     @ObservedObject var presenter: CategoryDetailsPresenter
 
@@ -18,7 +18,7 @@ public struct CategoryDetailsView: View {
         self.presenter = presenter
     }
 
-    public var body: some View {
+    var body: some View {
         buildBodyContent()
             .task {
                 await presenter.fetchData(for: categoryType)
@@ -54,10 +54,10 @@ public struct CategoryDetailsView: View {
                             .background(Color(UIColor.systemBackground))
                             .padding()
                     }) {
-                            ForEach(entity.transactions) { transaction in
-                                buildTransactionItem(transaction)
-                            }
+                        ForEach(entity.transactions) { transaction in
+                            buildTransactionItem(transaction)
                         }
+                    }
                 }
             }
         }

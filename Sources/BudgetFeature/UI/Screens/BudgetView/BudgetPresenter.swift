@@ -12,7 +12,9 @@ final class BudgetPresenter: ObservableObject {
     @Published var uiModel: BudgetUIModel = BudgetUIModel(state: .loading)
     private let interactor: BudgetInteractorProtocol
 
-    init(interactor: BudgetInteractorProtocol = BudgetInteractor()) {
+    init(uiModel: BudgetUIModel = BudgetUIModel(state: .loading),
+         interactor: BudgetInteractorProtocol = BudgetInteractor()) {
+        self.uiModel = uiModel
         self.interactor = interactor
     }
 
