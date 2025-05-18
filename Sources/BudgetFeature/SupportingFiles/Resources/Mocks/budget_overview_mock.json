@@ -1,0 +1,25 @@
+{
+  "total_budget": 1000,
+  "total_amount_spent": 650,
+  "currency": "EUR",
+  "categories": [
+    {
+      "type": "food",
+      "name": "Food",
+      "amount_spent": 400,
+      "budget": 550
+    },
+    {
+      "type": "shopping",
+      "name": "Shopping",
+      "amount_spent": 150,
+      "budget": 250
+    },
+    {
+      "type": "travel",
+      "name": "Travel",
+      "amount_spent": 100,
+      "budget": 200
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "category": "Food",
+  "currency": "EUR",
+  "amount_spent": 400,
+  "budget": 550,
+  "transactions": [
+    {
+      "title": "Grocery Store",
+      "amount": 30,
+      "date": "2025-05-14T00:00:00Z"
+    },
+    {
+      "title": "Bakery",
+      "amount": 20,
+      "date": "2025-05-12T00:00:00Z"
+    },
+    {
+      "title": "Restaurant",
+      "amount": 50,
+      "date": "2025-05-10T00:00:00Z"
+    },
+    {
+      "title": "Supermarket",
+      "amount": 100,
+      "date": "2025-05-05T00:00:00Z"
+    },
+    {
+      "title": "Grocery Store",
+      "amount": 30,
+      "date": "2025-05-14T00:00:00Z"
+    },
+    {
+      "title": "Bakery",
+      "amount": 20,
+      "date": "2025-05-12T00:00:00Z"
+    },
+    {
+      "title": "Restaurant",
+      "amount": 50,
+      "date": "2025-05-10T00:00:00Z"
+    },
+    {
+      "title": "Supermarket",
+      "amount": 100,
+      "date": "2025-05-05T00:00:00Z"
+    }
+  ]
+}
