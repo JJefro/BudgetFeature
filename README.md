@@ -58,4 +58,5 @@ var body: some View {
 This will display the full budget overview UI with mocked data and navigation to details.
 
 ## Preview
-![Simulator Screen Recording - iPhone 16 Pro - 2025-05-18 at 19 29 56](https://github.com/user-attachments/assets/babaeb0f-6891-47a5-a7b5-2831ad92fc5f)
+![Simulator Screen Recording - iPhone 16 Pro - 2025-05-18 at 19 29 56 2](https://github.com/user-attachments/assets/7338d9d9-91c9-4e0e-a618-b90545ce52ea)
+
